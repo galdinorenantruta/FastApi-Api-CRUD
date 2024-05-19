@@ -4,6 +4,7 @@ from sqlalchemy import Integer, String, Float, DateTime, ForeignKey
 from datetime import datetime
 
 
+
 class AtletaModel(BaseModel):
     __tablename__ = 'atletas'    
     pk_id: Mapped[int] = mapped_column(Integer, primary_key = True)
@@ -16,5 +17,5 @@ class AtletaModel(BaseModel):
     created_at: Mapped[datetime] = mapped_column(DateTime, nullable=False)
     categoria: Mapped['CategoriaModel'] = relationship(back_populates='atleta')
     categoria_id:Mapped[int] = mapped_column(ForeignKey('categorias.pk_id'))
-    centro_treinamento: Mapped['CentroTreinamentoModel'] =   relationship(back_populates='atleta')
+    centro_treinamento: Mapped['CentroTreinamentoModel'] = relationship(back_populates='atleta')
     centro_treinamento_id:Mapped[int] = mapped_column(ForeignKey('centros_treinamento.pk_id'))
